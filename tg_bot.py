@@ -83,12 +83,6 @@ language_flags = {
 # Логирование
 logging.basicConfig(level=logging.INFO)
 
-@dp.message_handler(commands=['start'])
-async def start(message: types.Message):
-    # Отправка приветственного сообщения и инструкций пользователю
-    text = "Привет! Я бот для скачивания и перевода субтитров с видео."
-    text += "\n\nПожалуйста, отправьте мне ссылку на видео, для которого нужны субтитры."
-    await message.reply(text)
 # Обработчик команды /start
 @dp.message_handler(commands=['start'])
 async def start_handler(message: types.Message):
@@ -97,9 +91,6 @@ async def start_handler(message: types.Message):
     text += "\n\nПожалуйста, отправьте мне ссылку на видео, для которого нужны субтитры."
     await message.reply(text)
     
-    # Сброс состояния пользователя
-    user_data = dp.user_data
-    user_data.clear()
 
 # Обработчик ссылки на видео
 @dp.message_handler(regexp=r'https?://[^\s]+')
